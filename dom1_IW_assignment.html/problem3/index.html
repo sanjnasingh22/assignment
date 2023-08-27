@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <button>Show Quote in console</button>
-  <p id="quote">Talk is cheap Show me the code</p>
-</body>
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="showOnConsole()">Show Quote in console</button>
+    <p id="quote">Talk is cheap Show me the code</p>
+  </body>
 </html>
 <script>
-  
-  console.log(document.getElementById("quote".innerText))
+  function showOnConsole() {
+    let text = document.getElementById("quote").innerText;
+    console.log(text);
+  }
 </script>
