@@ -1,44 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>calculator</title>
     <style>
-        button{
-            width: 80px;
-            height: 80px; 
-            font-size: 20px;
-        }
-        #display{
-            width: 250px;
-            height: 70px;  
-        }
+      button {
+        width: 80px;
+        height: 80px;
+        font-size: 20px;
+      }
+      #display {
+        width: 250px;
+        height: 70px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>CALCULATOR</h1>
     <button id="display"></button>
-    <br>
-    <button class="cal">1</button>
-    <button class="cal">2</button>
-    <button class="cal">3</button>
-    <br>
-    <button class="cal">4</button>
-    <button class="cal">5</button>
-    <button class="cal">6</button>
-    <br>
-    <button class="cal">7</button>
-    <button class="cal">8</button>
-    <button class="cal">9</button>
-    <br>
-    <button class="cal">0</button>
-    <button class="cal">C</button>
-    <button class="cal">+</button>
-    <br>
-    <button class="cal">-</button>
-    <button class="cal">*</button>
-    <button class="cal">/</button>
-    
-</body>
+    <br />
+    <div class="numbers">
+      <button class="number">1</button>
+      <button class="number">2</button>
+      <button class="number">3</button>
+      <br />
+      <button class="number">4</button>
+      <button class="number">5</button>
+      <button class="number">6</button>
+      <br />
+      <button class="number">7</button>
+      <button class="number">8</button>
+      <button class="number">9</button>
+      <br />
+      <button class="number">0</button>
+      <button id="cancel" class="cal">C</button>
+      <button class="operator">+</button>
+      <br />
+      <button class="operator">-</button>
+      <button class="operator">*</button>
+      <button class="operator">/</button>
+      <br />
+      <button class="operator">=</button>
+    </div>
+  </body>
+  <script>
+    let display = document.getElementById("display");
+    let firstNumber = 0;
+    let operator = "";
+
+    let numbers = document.querySelectorAll(".numbers > .number");
+
+    for (let i = 0; i < numbers.length; i++) {
+      numbers[i].addEventListener("click", function (e) {
+        display.innerText += numbers[i].innerText;
+      });
+    }
+
+    let operators = document.querySelectorAll(".numbers > .operator");
+
+    for (let i = 0; i < operators.length; i++) {
+      operators[i].addEventListener("click", function (e) {
+        if (
+          operators[i].innerText === "+" ||
+          operators[i].innerText === "-" ||
+          operators[i].innerText === "*" ||
+          operators[i].innerText === "/"
+        ) {
+          operator = operators[i].innerText;
+          firstNumber = Number(display.innerText);
+          display.innerText = "";
+        } else {
+          if (operator === "+") {
+            let sum = firstNumber + Number(display.innerText);
+            display.innerText = sum;
+            firstNumber = "";
+          } else if (operator === "-") {
+            let sum = firstNumber - Number(display.innerText);
+            display.innerText = sum;
+            firstNumber = "";
+          } else if (operator === "*") {
+            let sum = firstNumber * Number(display.innerText);
+            display.innerText = sum;
+            firstNumber = "";
+          } else {
+            let sum = firstNumber / Number(display.innerText);
+            display.innerText = sum;
+            firstNumber = "";
+          }
+        }
+      });
+    }
+
+    document.getElementById("cancel").addEventListener("click", function () {
+      display.innerText = "";
+      firstNumber = "";
+    });
+  </script>
 </html>
