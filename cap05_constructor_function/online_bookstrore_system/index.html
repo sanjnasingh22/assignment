@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function Author(name, birthYear, nationality) {
+      this.name = name;
+      this.birthYear = birthYear;
+      this.nationality = nationality;
+    }
+
+    function Book(title, author, genre, price) {
+      this.title = title;
+      this.author = author;
+      this.genre = genre;
+      this.price = price;
+    }
+
+    Book.prototype.getBookInfo = function () {
+      console.log("Title:", this.title);
+      console.log("Author:", this.author.name);
+      console.log("Genre:", this.genre);
+      console.log("Price:", this.price);
+    };
+
+    let author1 = new Author("J.K. Rowling", 1965, "British");
+    let author2 = new Author("George Orwell", 1903, "British");
+
+    let book1 = new Book(
+      "Harry Potter and the Sorcerer's Stone",
+      author1,
+      "Fantasy",
+      20.99
+    );
+    let book2 = new Book("1984", author2, "Dystopian", 15.99);
+
+    book1.getBookInfo();
+    book2.getBookInfo();
+  </script>
+</html>
+
+<!-- // Creating instances of Author
+const author1 = new Author('J.K. Rowling', 1965, 'British');
+const author2 = new Author('George Orwell', 1903, 'British');
+
+// Creating instances of Book
+const book1 = new Book('Harry Potter and the Sorcerer\'s Stone', author1, 'Fantasy', 20.99);
+const book2 = new Book('1984', author2, 'Dystopian', 15.99);
+
+// Display book details
+book1.getBookInfo();
+book2.getBookInfo(); -->
+-->
