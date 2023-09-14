@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="display">0</h1>
+    <button id="start">start</button>
+    <button id="paush">paush</button>
+    <button id="reset">reset</button>
+  </body>
+  <script>
+    let timer = 0;
+    let stopwatch;
+
+    let start = document.getElementById("start");
+    let paush = document.getElementById("paush");
+    let reset = document.getElementById("reset");
+
+    function updateTimer() {
+      stopwatch = setTimeout(function () {
+        timer++;
+        updateTimer();
+      }, 1000);
+      document.getElementById("display").innerText = timer;
+    }
+
+    start.addEventListener("click", function () {
+      updateTimer();
+    });
+
+    paush.addEventListener("click", function () {
+      clearTimeout(stopwatch);
+    });
+
+    reset.addEventListener("click", function () {
+      clearTimeout(stopwatch);
+      timer = 0;
+      document.getElementById("display").innerText = timer;
+    });
+  </script>
+</html>
