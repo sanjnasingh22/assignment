@@ -12,16 +12,29 @@
     <button id="reset">reset</button>
   </body>
   <script>
-    let timer = 0;
+    let timer = "0s";
+    let second = 0;
+    let minutes = 0;
+    let hour = 0;
     let stopwatch;
 
     let start = document.getElementById("start");
     let paush = document.getElementById("paush");
     let reset = document.getElementById("reset");
+    document.getElementById("display").innerText = timer;
 
     function updateTimer() {
       stopwatch = setInterval(function () {
-        timer++;
+        if (second > 59) {
+          minutes++;
+          second = 0;
+        }
+        if (minutes > 59) {
+          hour++;
+          minutes = 0;
+        }
+        second++;
+        timer = `${hour}h` + ` ${minutes}m` + ` ${second}s`;
         document.getElementById("display").innerText = timer;
       }, 1000);
     }
