@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .slide-container {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="slide-container">
+      <button id="prev">Prev</button>
+      <img
+        id="image"
+        alt="image"
+        height="600px"
+        width="950px"
+        src="https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376459.jpg"
+      />
+      <button id="next">Next</button>
+    </div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    let images = [
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376459.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376389.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376396.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376445.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376480.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376368.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376235.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376466.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376424.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376487.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376382.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376403.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376410.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376214.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376340.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376228.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376375.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376284.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376298.jpg",
+      "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701376347.jpg",
+    ];
+
+    let slider;
+    let slideIndex = 0;
+    let start = document.getElementById("start");
+    let stop = document.getElementById("stop");
+    let prev = document.getElementById("prev");
+    let next = document.getElementById("next");
+    let image = document.getElementById("image");
+
+    function updateImage() {
+      slider = setInterval(function () {
+        if (slideIndex === images.length - 1) {
+          slideIndex = 0;
+        } else {
+          slideIndex++;
+        }
+        image.setAttribute("src", images[slideIndex]);
+      }, 1000);
+    }
+
+    start.addEventListener("click", function () {
+      updateImage();
+    });
+
+    stop.addEventListener("click", function () {
+      clearInterval(slider);
+    });
+
+    prev.addEventListener("click", function () {
+      if (slideIndex === 0) {
+        console.log(slideIndex);
+        slideIndex = images.length - 1;
+      } else {
+        slideIndex--;
+      }
+      image.setAttribute("src", images[slideIndex]);
+    });
+
+    next.addEventListener("click", function () {
+      if (slideIndex === images.length - 1) {
+        slideIndex = 0;
+      } else {
+        slideIndex++;
+      }
+      image.setAttribute("src", images[slideIndex]);
+    });
+  </script>
+</html>
