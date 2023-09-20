@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>phone pay</title>
+    <style>
+      .pending,
+      .success,
+      .failed {
+        border: 1px solid black;
+        width: 250px;
+        height: 370px;
+        align-items: center;
+        justify-content: center;
+        display: none;
+
+        flex-direction: column;
+        color: white;
+      }
+
+      .pending {
+        background-color: green;
+      }
+
+      .success {
+        background-color: green;
+      }
+
+      .failed {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div class="pending">
+        <h1>Pending</h1>
+      </div>
+
+      <div class="success">
+        <h1>Success</h1>
+      </div>
+
+      <div class="failed">
+        <h1>Failed</h1>
+      </div>
+      <button id="pay">Pay</button>
+    </div>
+  </body>
+
+  <script>
+    let successPage = document.querySelector(".success");
+    let pendingPage = document.querySelector(".pending");
+    let failedPage = document.querySelector(".failed");
+
+    function payment() {
+      let promise = new Promise(function (resolve, reject) {
+        pendingPage.style.display = "flex";
+        let success = true;
+        setTimeout(() => {
+          if (success) {
+            resolve(1);
+          } else {
+            reject();
+          }
+        }, 4000);
+
+        return Promise;
+      });
+
+      promise
+        .then((data) => {
+          pendingPage.style.display = "none";
+          if (data === 1) {
+            successPage.style.display = "flex";
+          } else {
+            failedPage.style.display = "flex";
+          }
+        })
+        .catch((err) => {
+          successPage.style.display = "none";
+          pendingPage.style.display = "none";
+          failedPage.style.display = "flex";
+        });
+    }
+
+    document.getElementById("pay").addEventListener("click", function () {
+      payment();
+    });
+  </script>
+</html>
