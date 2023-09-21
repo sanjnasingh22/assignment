@@ -7,12 +7,96 @@
   </head>
   <body>
     <div id="food_option">
-
-      <label><input type="checkbox"/>Burger</label>
-      <label><input type="checkbox"/>Pizza</label>
-      <label><input type="checkbox"/>Soda</label>
-       
+      <label><input type="checkbox" name="order" value="burger" />Burger</label>
+      <label><input type="checkbox" name="order" value="pizza" />Pizza</label>
+      <label><input type="checkbox" name="order" value="soda" />Soda</label>
     </div>
-    <button>Order Food</button>
+    <button id="orderFood">Order Food</button>
+    <div id="allImages"></div>
   </body>
+  <script>
+    let checkbox = document.querySelectorAll(
+      "#food_option input[type='checkbox']"
+    );
+
+    let imageDiv = document.getElementById("allImages");
+
+    let foodImage = [
+      {
+        name: "soda",
+        link: "https://bisleri-shop-storage.s3.ap-south-1.amazonaws.com/products/June2023/elOsTDpEV9gTyrf2fL4b.png",
+      },
+      {
+        name: "burger",
+        link: "https://hips.hearstapps.com/hmg-prod/images/best-ever-burger-index-646e5ae887b2b.jpg",
+      },
+      {
+        name: "pizza",
+        link: "https://www.allrecipes.com/thmb/iXKYAl17eIEnvhLtb4WxM7wKqTc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/240376-homemade-pepperoni-pizza-Beauty-3x4-1-6ae54059c23348b3b9a703b6a3067a44.jpg",
+      },
+    ];
+
+    let orderButton = document.getElementById("orderFood");
+
+    orderButton.addEventListener("click", function () {
+      let foods = Array.from(checkbox)
+        .filter(function (item) {
+          return item.checked;
+        })
+        .map(function (elem) {
+          return elem.value;
+        });
+
+      let selectedImage = [];
+      for (let i = 0; i < foods.length; i++) {
+        for (let j = 0; j < foodImage.length; j++) {
+          if (foods[i] === foodImage[j].name) {
+            selectedImage.push(foodImage[j].link);
+          }
+        }
+      }
+
+      let promise = new Promise(function (resolve, reject) {
+        imageDiv.innerHTML = "<h1>Preparing food<h2>";
+        let success = true;
+        setTimeout(() => {
+          if (success) {
+            resolve(1);
+          } else {
+            reject();
+          }
+        }, 4000);
+
+        return Promise;
+      });
+
+      promise
+        .then((data) => {
+          imageDiv.innerHTML = "";
+          if (data === 1) {
+            mapImage(selectedImage);
+          } else {
+            imageDiv.innerHTML = "<h1>Order Failed</h1>";
+          }
+        })
+        .catch((err) => {
+          imageDiv.innerHTML = "";
+          imageDiv.innerHTML = "<h1>Order Failed</h1>";
+        });
+    });
+
+    function mapImage(data) {
+      imageDiv.innerHTML = "";
+      imageDiv.style.display = "flex";
+      imageDiv.style.gap = "5px";
+      data.map(function (elem) {
+        let img = document.createElement("img");
+        img.setAttribute("src", elem);
+        img.style.height = "100px";
+        img.style.width = "100px";
+
+        imageDiv.append(img);
+      });
+    }
+  </script>
 </html>
