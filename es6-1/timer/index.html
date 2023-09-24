@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="display">0</p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="increament">Increament</button>
+    <button id="decreament">Decreament</button>
+  </body>
+
+  <script>
+    let timer;
+    let sec = 0;
+    let display = document.querySelector(".display");
+    let start = document.getElementById("start");
+    let increament = document.getElementById("increament");
+    let decrement = document.getElementById("decreament");
+    start.addEventListener("click", () => {
+      timer = setInterval(() => {
+        sec++;
+        display.innerText = sec;
+      }, 1000);
+    });
+
+    let stop = document.getElementById("stop");
+    stop.addEventListener("click", () => {
+      clearInterval(timer);
+      display.innerText = sec;
+    });
+
+    increament.addEventListener("click", () => {
+      sec++;
+      display.innerText = sec;
+    });
+
+    decrement.addEventListener("click", () => {
+      sec--;
+      display.innerText = sec;
+    });
+  </script>
+</html>
