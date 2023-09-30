@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>movies</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #searchBar {
+        border: 2px solid black;
+        width: 800px;
+        height: 200px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        background-color: rgb(131, 123, 123);
+        color: white;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      #search {
+        width: 500px;
+        height: 40px;
+        font-size: 20px;
+        padding: 5px;
+        margin: 0;
+        border-radius: 10px;
+      }
+      #search-btn {
+        height: 50px;
+        width: 100px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 15px;
+        border: none;
+      }
+
+      #search-btn:hover {
+        background-color: aquamarine;
+      }
+
+      #search:active {
+        border: 1px solid blue;
+      }
+
+      #search-results {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .movieDiv {
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="searchBar">
+      <label for=""
+        ><input
+          type="text"
+          name=""
+          id="search"
+          placeholder="Type here to search movies"
+        />
+        <button id="search-btn">Search</button></label
+      >
+    </div>
+    <div>
+      <h1>Results :</h1>
+      <div id="search-results"></div>
+    </div>
+  </body>
+  <script src="./index.js"></script>
+</html>
