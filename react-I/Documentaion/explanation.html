@@ -1,0 +1,114 @@
+1.What is React? 
+
+React is the popular library for Java Script for building userinterferance on website and web application.
+It make easier for  deploper to create intractive and dynamic pary of a website to create button,form, 
+and content update. React is commonly used for creating interactive and user-friendly websites and is 
+widely used in web development.
+
+
+2.Who made React?
+
+React was created by a software engineer named Jordan Walke while he was working at Facebook. He devloped 
+react to solve some challenges .That he wes facing whe he was making user interfaces for Facebook website
+and then facebook make react open source which means they share with wide devloper community.Allow them to
+use and contribute in the project.This oppeness lead react widly addopted library for building userinterferance
+on the web.React was made by Jordan Walke at Facebook and then shared with the world for everyone to use.
+
+3.What is Babel?
+
+Babel is a language translator for our computer program.It is like a tool we the devloper write the code in one  
+programming language and then the bable translateranslates that code into an older version that can be understood
+and run by web browsers and other software.Babel allows developers to use the latest and greatest features of a 
+programming language, even if not all computers and browsers understand those new features yet.
+
+4.How does Babel convert html code in React into valid code?
+
+Bable uesd to convert java script code not HTML but it also use. React to handle JavaScript transformations
+
+1.Java Script with JSX
+In React, you write your user interface using JSX. JSX is like a mix of JavaScript and HTML,
+and it is  not something web browsers can understand directly.
+
+2.Babel Compilation
+When you use Babel with React it takes your JavaScript code with JSX and converts it into plain JavaScript. 
+It changes the code into an older version of JavaScript that web browsers can understand.
+
+
+So, Babel doesn't directly convert HTML into valid code, but it is  mainly used to transform modern JavaScript
+including JSX used in React, into a format that browsers can execute. 
+
+
+5.What is ReactDOM used for? Write an example?
+
+ReactDOM is a part of React and it's used to take your  building block of web page like (react components)
+and show them on a web page. It's responsible for rendering your components in the browser.
+
+
+Example:-
+<body>
+  <div id="root"></div>
+  
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script type="text/babel">
+    function HelloWorld() {
+      return <div>Hello, World!</div>;
+    }
+
+    ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+  </script>
+</body>
+
+6.What are the packages that you need to import for react to work with? 
+
+react: This package provides the core functionality for building React components.
+
+react-dom: This package is used for rendering React components on a web page in the browser.
+
+7.How do you add react to a web application?
+
+Adding React to a web application can be broken down into these simple steps:-
+
+1.Set Up Your Development Environment
+2.Create a New React Project
+3.Navigate to Your Project
+4.Start the Development Server
+5.Edit Your Code
+6.See Changes in the Browser
+
+
+You have added React to your web application. You can continue to build and customize your app by editing
+the code in the src folder. React will automatically handle the display and interaction with your web
+page.
+
+8.What is React.createElement?
+
+React.createElement is a special function in React that you use to create elements or components in your 
+web application.
+
+9.What are the three properties that createElement accept?
+
+React.createElement accepts three properties (or arguments)
+1. Type: 'div'
+2.Props: { className: 'my-div' }
+3.Children: 'This is some text inside the div'
+
+
+10.What is the meaning of render and root?
+
+RENDER:-In React, "render" is a process of displaying or rendering our React components on a web page. 
+It's when React takes our component and makes it visible to the user in the browser.The render method
+in a React component is a special function where we can describe what the component should look like and 
+React takes care of actually showing it on the screen.
+
+ROOT:-The "root" typically refers to an HTML element in our web page where you want to render our React 
+application. It's the starting point for our React component tree.In your HTML document, you might have a
+<div> element with a specific id like <div id="root"></div> and this is where our React application will
+be "rooted" or displayed.It's the entry point where our React components will appear.
+
+
+
+
+
+
+
