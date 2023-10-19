@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        let rootElement= document.getElementById("root")
+
+        let element= document.createElement("div")
+        element.className="container"
+        element.textContent = `carpe Diem`
+
+
+        rootElement.append(element)
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- import "./styles.css";
+
+const userDetail={
+  imageUrl:"https://avatoon.me/wp-content/uploads/2021/09/Cartoon-Pic-Ideas-for-DP-Profile11.png",
+  name:"Sanjana Singh"
+}
+
+const avtarStyle={
+  borderRadius:"50%",
+  border:"5px solid black",
+  width:"100px",
+  height:"100px"
+}
+
+function Avatar(prop){
+  return(
+    <div>
+      <image src={prop.user.imageUrl}style={avatarStyle}/>
+      <p>{prop.user.name}</p>
+      </div>
+  )
+}
+
+function button(){
+  return(
+    <button>Sanjana please click me</button>
+  )
+}
+
+export default function App() {
+  return (
+    <div className="App">
+     <Avatar User={userDetail}/>
+     <button/>
+    </div>
+  );
+} -->
