@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #inp{
+        #inp {
             width: 250px; 
             height: 50px;
             border: 3px solid black;
             text-align: center;
             font-size: 25px;
-            background-color:lightsalmon;
+            background-color: lightsalmon;
             border-top-right-radius: 10%; 
             border-bottom-left-radius: 10%;
             border-bottom-right-radius: 10%;
             border-top-left-radius: 10%;
-
         }
     </style>
     
@@ -29,24 +28,23 @@
 </html>
 
 <script>
-    let inp= document.getElementById("Inp")
-    let outputDiv= document.getElementById("output")
+    let inp = document.getElementById("inp");
+    let outputDiv = document.getElementById("output");
 
-    function performOperation(query){
-
+    function performOperation(query) {
         fetch(`http://www.omdbapi.com/?apikey=15a93b4e&s=${query}`)
-        .then((res)=> res.json())
-        .then((data)=>console.log(data))
-        .then((error)=>console.log(error))
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.log(error));
     }
 
-    function throttle (func,delay){
-        let throttle=false;
-        function inner(quary) {
-            if(throttle == false) {
-                throttle = true;
-                func(quary);
-                setTimeout(() =>{
+    function throttle(func, delay) {
+        let throttling = false;
+        function inner(query) {
+            if (!throttling) {
+                throttling = true;
+                func(query);
+                setTimeout(() => {
                     throttling = false;
                 }, delay);
             }
@@ -54,11 +52,9 @@
         return inner;
     }
 
-    
+    let throttleSearch = throttle(performOperation, 500);
 
-    let throttleSearch =throttle(performOperation,500);
-
-    inp.addEventListener("input",() => {
+    inp.addEventListener("input", () => {
         let value = inp.value;
         throttleSearch(value);
     });
